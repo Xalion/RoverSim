@@ -14,3 +14,5 @@ class Engine:
         self.current_loc = self.starting_loc
         self.rover.battery_level = 100.0
 
+    def step(self):
+        # TODO here
