@@ -1,5 +1,5 @@
 import random
-
+import engine.EngineHelpers as helpers
 
 class Engine:
     """Contains the time loop that drives the simulation"""
@@ -15,4 +15,22 @@ class Engine:
         self.rover.battery_level = 100.0
 
     def step(self):
-        # TODO here
+        if self.rover.battery_level <= 0.0:
+            return False
+
+        direction = self.rover.get_movement_direction()
+
+        possible_grid_loc = self.rover.location
+
+        helpers.resolve_direction(direction)
+        possible_grid_loc[0] += direction[0]
+        possible_grid_loc[1] += direction[1]
+
+        if self.map.is_valid_location(possible_grid_loc):
+            self.rover.move_rover(possible_grid_loc)
+            return True
+
+        return False
+
+
+

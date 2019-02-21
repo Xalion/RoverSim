@@ -29,3 +29,6 @@ class GriddedTopographicalMap:
 
     def get_height(self, grid_location):
         return self.height_map[grid_location[0], grid_location[1]]
+
+    def is_valid_location(self, grid_location):
+        # implement
