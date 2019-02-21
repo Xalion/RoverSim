@@ -30,5 +30,14 @@ class GriddedTopographicalMap:
     def get_height(self, grid_location):
         return self.height_map[grid_location[0], grid_location[1]]
 
-    def is_valid_location(self, grid_location):
-        # implement
+    def is_valid_location(self, grid_location, rover):
+        if grid_location[0] < 0 or grid_location[0] >= self.x_grid_div:
+            return False
+        if grid_location[1] < 1 or grid_location[1] >= self.y_grid_div:
+            return False
+        new_z = self.height_map[ grid_location[0], grid_location[1] ]
+        height_change = new_z - rover.location[3]
+        if height_change > rover.max_height_change:
+            return False
+
+        return True

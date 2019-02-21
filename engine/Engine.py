@@ -26,7 +26,7 @@ class Engine:
         possible_grid_loc[0] += direction[0]
         possible_grid_loc[1] += direction[1]
 
-        if self.map.is_valid_location(possible_grid_loc):
+        if self.map.is_valid_location(possible_grid_loc, self.rover):
             self.rover.move_rover(possible_grid_loc)
             return True
 
